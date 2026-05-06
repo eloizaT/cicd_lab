@@ -3,6 +3,9 @@
 This guide walks you through setting up a **production-like CI/CD lab**
 on your lab machine using WSL and Docker.
 
+Ultimately, the goal here is to be able to design a **language-agnostic CI/CD pipeline** 
+which is exactly how mature platforms standardize builds across diverse stacks.
+
 ------------------------------------------------------------------------
 
 # Architecture Overview
@@ -10,7 +13,7 @@ on your lab machine using WSL and Docker.
 The lab includes:
 
 -   Jenkins (CI/CD orchestration)
--   Gitea (Git server with multiple repos)
+-   Gitea (a lightweight Git server)
 -   Nexus (artifact repository)
 -   SonarQube (code quality)
 -   Nginx (reverse proxy with custom hostnames)
@@ -128,7 +131,7 @@ Once this base setup is working, you can extend the lab by adding:
 
 ------------------------------------------------------------------------
 
-# ✅ Summary
+# Summary
 
 You now have a clean, working lab CI/CD lab with:
 
