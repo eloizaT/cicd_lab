@@ -1,7 +1,7 @@
 # CI/CD Lab Setup (WSL + Docker)
 
 This guide walks you through setting up a **production-like CI/CD lab**
-on your lab machine using WSL and Docker.
+on your lab machine using Docker and WSL if the target machine is in Windows. 
 
 Ultimately, the goal here is to be able to design a **language-agnostic CI/CD pipeline** 
 which is exactly how mature platforms standardize builds across diverse stacks.
@@ -31,6 +31,16 @@ Verify:
 
 ``` bash
 docker --version
+```
+
+Verify:
+``` bash
+docker compose version
+```
+
+If docker-compose is missing, run:
+``` bash
+sudo apt install docker-compose
 ```
 
 ------------------------------------------------------------------------
@@ -65,7 +75,11 @@ Add:
 docker-compose up -d
 ```
 
-Wait a couple of minutes for all services to start.
+Wait a couple of minutes for all services to start. Then take a note of the names of 
+the created containers by running:
+``` bash
+docker ps
+```
 
 ------------------------------------------------------------------------
 
@@ -82,19 +96,22 @@ Wait a couple of minutes for all services to start.
 
 ## Jenkins
 
--   Unlock using:
+-   The generated admin password can be copied from the output of command below:
 
     ``` bash
     docker logs <jenkins-container>
     ```
 
--   Set URL:
+-   Choose **Select plugins to install**, keep only the defaults for now to make it minimal
+    and proceed with the rest of the installation.
+
+-   The last window will prompt for URL, set it to:
 
         http://jenkins.lab
 
 ## Gitea
 
--   Create admin user
+-   Keep all default installation settings for now and create an admin user.
 
 -   Set:
 
@@ -104,11 +121,13 @@ Wait a couple of minutes for all services to start.
 
 -   Default user: `admin`
 
--   Get password:
+-   To get its password:
 
     ``` bash
     docker exec -it <nexus-container> cat /nexus-data/admin.password
     ```
+
+    The password will look like a SW activation key. 
 
 ## SonarQube
 
