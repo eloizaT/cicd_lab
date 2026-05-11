@@ -15,8 +15,7 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts
-    expose:
-      - "8080"
+    network_mode: host
     volumes:
       - ./data/jenkins:/var/jenkins_home
 

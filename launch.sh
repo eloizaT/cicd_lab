@@ -28,7 +28,6 @@ echo "Recreating KIND cluster..."
 echo "======================================"
 
 kind create cluster --name cicd-lab --config kind/kind_config.yaml
-
 kubectl apply -f kube_test/deployment.yaml
 kubectl apply -f kube_test/service.yaml
 kubectl apply -f kube_test/ingress.yaml
@@ -40,6 +39,8 @@ kubectl wait --namespace ingress-nginx \
   --timeout=200s
 
 kubectl get pods -n ingress-nginx
+
+kubectl apply -f kind/jenkins_sa.yaml
 
 echo ""
 echo "======================================"
