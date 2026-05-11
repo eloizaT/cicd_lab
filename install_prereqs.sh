@@ -49,6 +49,19 @@ fi
 
 echo
 echo "======================================"
+echo "Generating data folders"
+echo "======================================"
+mkdir -p ./data/jenkins
+mkdir -p ./data/gitea
+mkdir -p ./data/nexus
+mkdir -p ./data/sonarqube
+
+sudo chown -R 200:200 ./data/nexus
+#sudo chown -R 1000:1000 ./data/jenkins
+#sudo chown -R 1000:1000 ./data/sonarqube
+
+echo
+echo "======================================"
 echo "Installed versions"
 echo "======================================"
 
